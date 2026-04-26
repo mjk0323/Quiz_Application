@@ -6,7 +6,7 @@
 
 ### ✍️문제 수정
 : quizs 폴더 안의 quiz 파일만 수정하면 됨, quiz.js를 메모장으로 열어서 클로드가 준 코드로 대체
-
+(QUIZ_CONFIG랑 questions 함수 부분만 복붙하면 토큰 조금 아낄 수 있는데 귀찮으면 통째로 넣어도 괜찮음)
 만약 문제 여러 개 저장해두고 쓰고 싶다하면 quizs 폴더 안에 quiz1.js 이런 식으로 이름은 마음대로, 확장자는 .js로 해준 후 퀴즈 풀 때 index.html 파일 맨 밑의 <br><br>
 <img width="400" height=auto alt="image" src="https://github.com/user-attachments/assets/efff520b-ebe4-47ac-a2af-4e71ebc6987f" />
 <script src="quizs/quiz.js"></script>
@@ -34,6 +34,7 @@
 ### 📎프롬프트 입력 예시
 
 첨부파일 : [운영체제01.pdf, 운영체제02.pdf, 운영체제03.pdf, quiz.js]
+// quiz.js 파일은 메모장으로 열어서 텍스트만 전체 선택 후 복붙해도 됨 굳이 js 파일일 필요 없음 
 
 이 프롬프트에 맞춰서 문제 내줘
 
