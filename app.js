@@ -46,7 +46,7 @@
     clearScreen();
     const wrap = el("div", "intro-wrap");
 
-    const badge = el("div", "intro-badge", "전공 퀴즈");
+    const badge = el("div", "intro-badge", "시험 대비 퀴즈");
     const title = el("h1", "intro-title", QUIZ_CONFIG.title);
     const sub   = el("p",  "intro-sub",   QUIZ_CONFIG.subtitle);
 
