@@ -8,10 +8,10 @@
 : quizs 폴더 안의 quiz 파일만 수정하면 됨, quiz.js를 메모장으로 열어서 클로드가 준 코드로 대체
 
 만약 문제 여러 개 저장해두고 쓰고 싶다하면 quizs 폴더 안에 quiz1.js 이런 식으로 이름은 마음대로, 확장자는 .js로 해준 후 퀴즈 풀 때 index.html 파일 맨 밑의 <br><br>
-<img width="400" height=auto style="float:left;" alt="image" src="https://github.com/user-attachments/assets/555e25f5-9376-4fc2-8155-5816a2722fb2" />
-<script src="quizs/quiz2.js"></script>
-이 부분에서 quiz2.js 이걸 바꿔주면 됨
-설정한 파일 이름이 momonga.js면 <script src="quizs/momonga.js"></script> 가 됨
+<img width="400" height=auto alt="image" src="https://github.com/user-attachments/assets/efff520b-ebe4-47ac-a2af-4e71ebc6987f" />
+<script src="quizs/quiz.js"></script>
+이 부분에서 quiz.js 이걸 바꿔주면 됨
+만든 파일 이름이 momonga.js면 <script src="quizs/momonga.js"></script> 가 됨
 
 
 ### ⌨️클로드 프롬프트
