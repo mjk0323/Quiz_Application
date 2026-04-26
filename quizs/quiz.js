@@ -76,11 +76,56 @@ const TYPE_HANDLERS = {
       wrapper.appendChild(btn);
       container.appendChild(wrapper);
     },
-    grade(q, userAnswer) {
-      const normalize = s => s.toLowerCase().replace(/[\s\-_]/g, "");
-      const accepted = Array.isArray(q.answer) ? q.answer : [q.answer];
-      return accepted.some(a => normalize(userAnswer) === normalize(a));
+    short: {
+    render(q, container, onAnswer) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "short-answer-wrapper";
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "short-input";
+      input.placeholder = "답을 입력하세요 / Enter your answer";
+      const btn = document.createElement("button");
+      btn.className = "submit-btn";
+      btn.textContent = "제출";
+      btn.addEventListener("click", () => {
+        if (container.dataset.answered) return;
+        const val = input.value.trim();
+        if (!val) return;
+        container.dataset.answered = "1";
+        input.disabled = true;
+        btn.disabled = true;
+        const correct = TYPE_HANDLERS.short.grade(q, val);
+        input.classList.add(correct ? "correct" : "wrong");
+        onAnswer(correct, val);
+      });
+      input.addEventListener("keydown", e => { if (e.key === "Enter") btn.click(); });
+      wrapper.appendChild(input);
+      wrapper.appendChild(btn);
+      container.appendChild(wrapper);
     },
+    grade(q, userAnswer) {
+      const normalize = s => s.toLowerCase().replace(/[\s\-_\.,%:·/]/g, "");
+      const val = normalize(userAnswer);
+
+      // answer가 키워드 그룹 배열인 경우: [ ["volume","볼륨"], ["variety"], ["velocity"] ]
+      // answer가 단순 문자열/배열인 경우: "28" 또는 ["28", "이십팔"]
+      if (Array.isArray(q.answer) && Array.isArray(q.answer[0])) {
+        // 구조: 2D 배열 — 각 그룹에서 하나 이상 포함되어야 함
+        const minMatch = q.minMatch ?? q.answer.length; // 기본: 전부 포함
+        let matched = 0;
+        for (const group of q.answer) {
+          const synonyms = group.map(normalize);
+          if (synonyms.some(kw => val.includes(kw))) matched++;
+        }
+        return matched >= minMatch;
+      }
+
+      // 구조: 1D 배열 또는 단일 문자열 — 하나라도 포함되면 정답
+      const accepted = Array.isArray(q.answer) ? q.answer : [q.answer];
+      return accepted.some(a => val.includes(normalize(a)));
+    },
+  },
+};
   },
 };
 
